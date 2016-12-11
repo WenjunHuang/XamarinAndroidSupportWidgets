@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v4.widget.DrawerLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/id_drawerlayout"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  <!--第一个位置-->
+  <!-- 主界面的内容必须放置在DrawerLayout的第一个位置。可根据需要放置不同空间，例如布局或单个控件-->
+  <include layout="@layout/main_content"/>
+
+  <!--第二个位置-->
+  <!--用来放置DrawerLayout的内容-->
+  <android.support.design.widget.NavigationView
+    android:id="@+id/id_navigationview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-</LinearLayout>
+    app:itemTextColor="@color/selector_nav_menu_textcolor"
+    android:layout_gravity ="left" />
+  
+  
+</android.support.v4.widget.DrawerLayout>

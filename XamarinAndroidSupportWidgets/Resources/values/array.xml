@@ -1,0 +1,9 @@
+﻿<resources>
+  <string-array name="tab_titles">
+    <item>Vertical List</item>
+    <item>Horizontal List</item>
+    <item>Vertical Grid</item>
+    <item>Horizontal List</item>
+    <item>Waterfall Staggered</item>
+  </string-array>
+</resources>
