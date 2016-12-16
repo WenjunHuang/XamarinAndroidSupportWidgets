@@ -25,6 +25,7 @@ namespace XamarinAndroidSupportWidgets
 
         public string[] _titles;
         private List<Fragment> _fragments;
+        private MyViewPagerAdapter _viewPagerAdapter;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -58,8 +59,10 @@ namespace XamarinAndroidSupportWidgets
             foreach (var title in _titles)
             {
                 var bundle = new Bundle();
-                bundle.PutInt("flag", index++);
-                //var fragment = new MyFragment();
+                bundle.PutInt("flag", index);
+                var fragment = new MyFragment {Arguments = bundle};
+                _fragments.Insert(index, fragment);
+                ++index;
             }
         }
 
@@ -68,16 +71,24 @@ namespace XamarinAndroidSupportWidgets
             SetSupportActionBar(_toolbar);
 
             var drawerToggle = new ActionBarDrawerToggle(
-                activity:this,
-                drawerLayout:_drawerLayout,
-                toolbar:_toolbar,
+                activity: this,
+                drawerLayout: _drawerLayout,
+                toolbar: _toolbar,
                 openDrawerContentDescRes: Resource.String.open,
-                closeDrawerContentDescRes:Resource.String.close);
+                closeDrawerContentDescRes: Resource.String.close);
             drawerToggle.SyncState();
             _drawerLayout.SetDrawerListener(drawerToggle);
 
             _navigationView.InflateHeaderView(Resource.Layout.header_nav);
+            _navigationView.InflateMenu(Resource.Menu.menu_nav);
+
+            _viewPagerAdapter = new MyViewPagerAdapter(SupportFragmentManager, _titles, _fragments);
+            _viewPager.Adapter = _viewPagerAdapter;
+            _viewPager.OffscreenPageLimit = 5;
+
+            _tabLayout.TabMode = TabLayout.ModeScrollable;
+            _tabLayout.SetupWithViewPager(_viewPager);
+
         }
     }
 }
-

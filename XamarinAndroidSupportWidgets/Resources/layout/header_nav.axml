@@ -5,7 +5,7 @@
               android:background="@drawable/ic_user_background"
               android:gravity="center"
               android:orientation="vertical">
-  <xamarinAndroidSupportWidgets.view.RoundedImageView
+  <xamarinandroidsupportwidgets.view.RoundedImageView
     android:id="@+id/id_header_face"
     android:layout_width="110dp"
     android:layout_height="110dp"
